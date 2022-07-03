@@ -7,19 +7,19 @@ import videoPlayerLogo from "../../../assets/video-player.png";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
-import "./Login.css";
+import "./Signup.css";
 
 // auth.setPersistence(auth, browserLocalPersistence);
 
-export default function Login() {
+export default function SignUp() {
   const [adminCredentials, setAdminCredentials] = useState({
     email: "",
     password: "",
   });
-  const [isLoginFailed, setIsLoginFailed] = useState(false);
+  const [isSignUpFailed, setIsSignUpFailed] = useState(false);
 
   const emailChangeHandler = (e) => {
-    if (isLoginFailed) setIsLoginFailed(false);
+    if (isSignUpFailed) setIsSignUpFailed(false);
     setAdminCredentials({
       ...adminCredentials,
       email: e.target.value,
@@ -27,14 +27,14 @@ export default function Login() {
   };
 
   const passwordChangeHandler = (e) => {
-    if (isLoginFailed) setIsLoginFailed(false);
+    if (isSignUpFailed) setIsSignUpFailed(false);
     setAdminCredentials({
       ...adminCredentials,
       password: e.target.value,
     });
   };
 
-  const submitLoginForm = async () => {
+  const submitSignUpForm = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -42,16 +42,16 @@ export default function Login() {
         adminCredentials.password
       );
     } catch (error) {
-      setIsLoginFailed(true);
+      setIsSignUpFailed(true);
     }
   };
 
   return (
     <div
-      className="login-main"
+      className="SignUp-main"
       style={{ display: "flex", flexDirection: "row" }}
     >
-      <div className="login-left">
+      <div className="SignUp-left">
         <AppCard
           appCardContainerStyles={{
             display: "flex",
@@ -65,9 +65,9 @@ export default function Login() {
           <img
             src={videoPlayerLogo}
             alt=""
-            className="login-video-player-logo"
+            className="SignUp-video-player-logo"
           />
-          {isLoginFailed && (
+          {isSignUpFailed && (
             <AppAlert
               title="Invalid Credentials, Try Again"
               style={{ width: "70%" }}
@@ -75,6 +75,13 @@ export default function Login() {
           )}
           <AppInput
             inputContainerStyles={{ marginTop: "15%" }}
+            inputStyles={{ padding: "9px" }}
+            type="User Name"
+            placeholder="User Name"
+            onChange={emailChangeHandler}
+          />
+          <AppInput
+            inputContainerStyles={{ marginTop: "3.5%" }}
             inputStyles={{ padding: "9px" }}
             type="email"
             placeholder="Email"
@@ -88,17 +95,17 @@ export default function Login() {
             onChange={passwordChangeHandler}
           />
           <AppButton
-            title="Login"
+            title="SignUp"
             btnStyles={{ marginTop: "4%", cursor: "pointer" }}
-            onClick={submitLoginForm}
+            onClick={submitSignUpForm}
           />
-          <div className="login-dont-have-account-link">
-            Don't have an account?
+          <div className="SignUp-dont-have-account-link">
+            Already have an account?
           </div>
         </AppCard>
       </div>
 
-      <div className="login-right">
+      <div className="SignUp-right">
         <AppCard
           appCardContainerStyles={{
             display: "flex",
@@ -112,9 +119,9 @@ export default function Login() {
           <img
             src={videoEditorLogo}
             alt=""
-            className="login-video-editor-logo"
+            className="SignUp-video-editor-logo"
           />
-          <div className="login-right-unique-point-heading">
+          <div className="SignUp-right-unique-point-heading">
             Edit Your Video's
             <br /> Intelligently
           </div>
