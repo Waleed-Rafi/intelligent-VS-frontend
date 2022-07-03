@@ -1,0 +1,8 @@
+.app-btn-main {
+  width: 70%;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: #1b232f;
+  text-align: center;
+  cursor: pointer;
+}
