@@ -51,74 +51,72 @@ export default function Login() {
       className="login-main"
       style={{ display: "flex", flexDirection: "row" }}
     >
-      <AppCard
-        appCardContainerStyles={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "40%",
-          borderRadius: "4% 0.5% 0.5% 4%",
-          position: "relative",
-        }}
-      >
-        <img src={videoPlayerLogo} alt="" style={{ height: "250px" }} />
-        {isLoginFailed && (
-          <AppAlert
-            title="Invalid Credentials, Try Again"
-            style={{ width: "70%" }}
-          />
-        )}
-        <AppInput
-          inputContainerStyles={{ marginTop: "15%" }}
-          inputStyles={{ padding: "9px" }}
-          type="email"
-          placeholder="Email"
-          onChange={emailChangeHandler}
-        />
-        <AppInput
-          inputContainerStyles={{ marginTop: "3.5%" }}
-          inputStyles={{ padding: "9px" }}
-          type="password"
-          placeholder="Password"
-          onChange={passwordChangeHandler}
-        />
-        <AppButton
-          title="Login"
-          btnStyles={{ marginTop: "4%", cursor: "pointer" }}
-          onClick={submitLoginForm}
-        />
-      </AppCard>
-
-      <AppCard
-        appCardContainerStyles={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "60%",
-          background:
-            "linear-gradient(to right, rgb(27, 35, 48) 0%, rgb(13, 17, 24) 100%)",
-        }}
-      >
-        <img
-          src={videoEditorLogo}
-          alt=""
-          style={{ height: "30%", width: "25%", marginBottom: "6%" }}
-        />
-        <div
-          style={{
-            fontSize: "40px",
-            fontWeight: 600,
-            color: "#fff",
-            fontFamily: "Poppins, Arial, Helvetica, sans-serif",
-            textAlign: "center",
+      <div className="login-left">
+        <AppCard
+          appCardContainerStyles={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "4% 0.5% 0.5% 4%",
+            position: "relative",
           }}
         >
-          Edit Your Video's
-          <br /> Intelligently
-        </div>
-      </AppCard>
+          <img
+            src={videoPlayerLogo}
+            alt=""
+            className="login-video-player-logo"
+          />
+          {isLoginFailed && (
+            <AppAlert
+              title="Invalid Credentials, Try Again"
+              style={{ width: "70%" }}
+            />
+          )}
+          <AppInput
+            inputContainerStyles={{ marginTop: "15%" }}
+            inputStyles={{ padding: "9px" }}
+            type="email"
+            placeholder="Email"
+            onChange={emailChangeHandler}
+          />
+          <AppInput
+            inputContainerStyles={{ marginTop: "3.5%" }}
+            inputStyles={{ padding: "9px" }}
+            type="password"
+            placeholder="Password"
+            onChange={passwordChangeHandler}
+          />
+          <AppButton
+            title="Login"
+            btnStyles={{ marginTop: "4%", cursor: "pointer" }}
+            onClick={submitLoginForm}
+          />
+        </AppCard>
+      </div>
+
+      <div className="login-right">
+        <AppCard
+          appCardContainerStyles={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            background:
+              "linear-gradient(to right, rgb(27, 35, 48) 0%, rgb(13, 17, 24) 100%)",
+          }}
+        >
+          <img
+            src={videoEditorLogo}
+            alt=""
+            className="login-video-editor-logo"
+          />
+          <div className="login-right-unique-point-heading">
+            Edit Your Video's
+            <br /> Intelligently
+          </div>
+        </AppCard>
+      </div>
     </div>
   );
 }
