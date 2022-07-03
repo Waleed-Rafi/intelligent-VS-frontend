@@ -92,6 +92,9 @@ export default function Login() {
             btnStyles={{ marginTop: "4%", cursor: "pointer" }}
             onClick={submitLoginForm}
           />
+          <div className="login-dont-have-account-link">
+            Don't have an account?
+          </div>
         </AppCard>
       </div>
 

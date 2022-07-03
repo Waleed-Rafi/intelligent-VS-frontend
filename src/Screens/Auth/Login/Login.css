@@ -36,6 +36,18 @@
   text-align: center;
 }
 
+.login-dont-have-account-link {
+  font-size: 14px;
+  color: #3498db;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.login-dont-have-account-link:hover {
+  cursor: pointer;
+  color: #2874a6;
+}
+
 @media screen and (max-width: 1000px) {
   .login-left {
     width: 50%;
