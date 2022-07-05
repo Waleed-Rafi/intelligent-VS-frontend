@@ -4,8 +4,8 @@ import "./AppHeader.css";
 export default function AppHeader() {
   return (
     <div>
-      <header class="header-fixed">
-        <div class="header-limiter">
+      <header className="header-fixed">
+        <div className="header-limiter">
           <h1>
             <a href="#">
               Video<span>Streamer</span>
@@ -13,10 +13,10 @@ export default function AppHeader() {
           </h1>
 
           <nav>
-            <a href="#">Home</a>
-            <a href="#" class="selected">
-              Studio
+            <a href="#" className="selected">
+              Home
             </a>
+            <a href="#">Studio</a>
             <a href="#">About</a>
           </nav>
         </div>
