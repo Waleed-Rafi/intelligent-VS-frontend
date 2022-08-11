@@ -1,0 +1,48 @@
+.home-screen-container {
+  margin-top: 50px;
+}
+
+.home-screen-video-main {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+.home-screen-video-with-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.home-screen-video {
+  height: 800px;
+  width: 700px;
+  background-color: #252f3e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.home-screen-video-actions {
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.home-screen-video-share-btn {
+  transform: scaleX(-1);
+}
+
+.home-screen-video-action-btn {
+  background-color: #252f3e;
+  font-size: 30px;
+  padding: 13px 20px;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .home-screen-video {
+    height: max-content;
+    max-height: 500px;
+    width: 100%;
+  }
+}

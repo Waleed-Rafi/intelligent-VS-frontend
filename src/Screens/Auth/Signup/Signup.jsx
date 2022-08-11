@@ -4,7 +4,7 @@ import AppCard from "../../../Components/AppCard/AppCard";
 import AppInput from "../../../Components/AppInput/AppInput";
 import videoEditorLogo from "../../../assets/video-editor.png";
 import videoPlayerLogo from "../../../assets/video-player.png";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
 import "./Signup.css";
@@ -13,10 +13,19 @@ import "./Signup.css";
 
 export default function SignUp() {
   const [adminCredentials, setAdminCredentials] = useState({
+    name: "",
     email: "",
     password: "",
   });
   const [isSignUpFailed, setIsSignUpFailed] = useState(false);
+
+  const nameChangeHandler = (e) => {
+    if (isSignUpFailed) setIsSignUpFailed(false);
+    setAdminCredentials({
+      ...adminCredentials,
+      name: e.target.value,
+    });
+  };
 
   const emailChangeHandler = (e) => {
     if (isSignUpFailed) setIsSignUpFailed(false);
@@ -36,11 +45,15 @@ export default function SignUp() {
 
   const submitSignUpForm = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const { user } = await createUserWithEmailAndPassword(
         auth,
         adminCredentials.email,
         adminCredentials.password
       );
+      await updateProfile(user, {
+        displayName: adminCredentials.name,
+      });
+      alert("Successfully Created!");
     } catch (error) {
       setIsSignUpFailed(true);
     }
@@ -68,17 +81,14 @@ export default function SignUp() {
             className="SignUp-video-player-logo"
           />
           {isSignUpFailed && (
-            <AppAlert
-              title="Invalid Credentials, Try Again"
-              style={{ width: "70%" }}
-            />
+            <AppAlert title="Error creating user!" style={{ width: "70%" }} />
           )}
           <AppInput
             inputContainerStyles={{ marginTop: "15%" }}
             inputStyles={{ padding: "9px" }}
             type="User Name"
             placeholder="User Name"
-            onChange={emailChangeHandler}
+            onChange={nameChangeHandler}
           />
           <AppInput
             inputContainerStyles={{ marginTop: "3.5%" }}
