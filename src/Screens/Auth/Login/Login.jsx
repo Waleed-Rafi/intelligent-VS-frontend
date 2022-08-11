@@ -36,11 +36,12 @@ export default function Login() {
 
   const submitLoginForm = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         adminCredentials.email,
         adminCredentials.password
       );
+      alert("Successfully Logged In!");
     } catch (error) {
       setIsLoginFailed(true);
     }
