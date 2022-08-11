@@ -7,11 +7,13 @@ import videoPlayerLogo from "../../../assets/video-player.png";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 // auth.setPersistence(auth, browserLocalPersistence);
 
 export default function Login() {
+  const navigator = useNavigate();
   const [adminCredentials, setAdminCredentials] = useState({
     email: "",
     password: "",
@@ -93,7 +95,12 @@ export default function Login() {
             btnStyles={{ marginTop: "4%", cursor: "pointer" }}
             onClick={submitLoginForm}
           />
-          <div className="login-dont-have-account-link">
+          <div
+            className="login-dont-have-account-link"
+            onClick={() => {
+              navigator("/signup");
+            }}
+          >
             Don't have an account?
           </div>
         </AppCard>

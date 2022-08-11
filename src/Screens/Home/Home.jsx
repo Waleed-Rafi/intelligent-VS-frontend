@@ -17,13 +17,16 @@ export default function Home() {
             <div className="home-screen-video-actions">
               <div className="home-screen-video-action-btn">
                 {/* <i class="bx bx-donate-heart"></i> */}
-                <i class="bx bxs-donate-heart" style={{ color: "#89E8D5" }}></i>
+                <i
+                  className="bx bxs-donate-heart"
+                  style={{ color: "#89E8D5" }}
+                ></i>
               </div>
               <div className="home-screen-video-action-btn">
-                <i class="bx bxs-message-square-add"></i>
+                <i className="bx bxs-message-square-add"></i>
               </div>
               <div className="home-screen-video-action-btn home-screen-video-share-btn">
-                <i class="bx bxs-share"></i>
+                <i className="bx bxs-share"></i>
               </div>
             </div>
           </div>
@@ -37,14 +40,17 @@ export default function Home() {
             ></video>
             <div className="home-screen-video-actions">
               <div className="home-screen-video-action-btn">
-                {/* <i class="bx bx-donate-heart"></i> */}
-                <i class="bx bxs-donate-heart" style={{ color: "#89E8D5" }}></i>
+                {/* <i className="bx bx-donate-heart"></i> */}
+                <i
+                  className="bx bxs-donate-heart"
+                  style={{ color: "#89E8D5" }}
+                ></i>
               </div>
               <div className="home-screen-video-action-btn">
-                <i class="bx bxs-message-square-add"></i>
+                <i className="bx bxs-message-square-add"></i>
               </div>
               <div className="home-screen-video-action-btn home-screen-video-share-btn">
-                <i class="bx bxs-share"></i>
+                <i className="bx bxs-share"></i>
               </div>
             </div>
           </div>
@@ -58,14 +64,17 @@ export default function Home() {
             ></video>
             <div className="home-screen-video-actions">
               <div className="home-screen-video-action-btn">
-                {/* <i class="bx bx-donate-heart"></i> */}
-                <i class="bx bxs-donate-heart" style={{ color: "#89E8D5" }}></i>
+                {/* <i className="bx bx-donate-heart"></i> */}
+                <i
+                  className="bx bxs-donate-heart"
+                  style={{ color: "#89E8D5" }}
+                ></i>
               </div>
               <div className="home-screen-video-action-btn">
-                <i class="bx bxs-message-square-add"></i>
+                <i className="bx bxs-message-square-add"></i>
               </div>
               <div className="home-screen-video-action-btn home-screen-video-share-btn">
-                <i class="bx bxs-share"></i>
+                <i className="bx bxs-share"></i>
               </div>
             </div>
           </div>
