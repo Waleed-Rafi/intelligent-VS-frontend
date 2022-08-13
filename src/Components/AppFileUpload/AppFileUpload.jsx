@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import "./AppFileUpload.css";
 
-export default function AppFileUpload({ onUploadImageHandler }) {
+export default function AppFileUpload({
+  onUploadImageHandler,
+  mainTitle = "Upload your file",
+  subTitle = "File should be an image",
+}) {
   useEffect(() => {
     // Design By
     // - https://dribbble.com/shots/13992184-File-Uploader-Drag-Drop
@@ -108,7 +112,7 @@ export default function AppFileUpload({ onUploadImageHandler }) {
 
       // If File Is Passed from the (File Validation) Function
       if (fileValidate(fileType, fileSize)) {
-        onUploadImageHandler(file);
+        // onUploadImageHandler(file);
         // Add Class (drop-zoon--Uploaded) on (drop-zoon)
         dropZoon.classList.add("drop-zoon--Uploaded");
 
@@ -184,34 +188,33 @@ export default function AppFileUpload({ onUploadImageHandler }) {
     // Simple File Validate Function
     function fileValidate(fileType, fileSize) {
       // File Type Validation
-      let isImage = imagesTypes.filter(
-        (type) => fileType.indexOf(`image/${type}`) !== -1
-      );
-
-      // If The Uploaded File Type Is 'jpeg'
-      if (isImage[0] === "jpeg") {
-        // Add Inisde (uploadedFileIconText) The (jpg) Value
-        uploadedFileIconText.innerHTML = "jpg";
-      } else {
-        // else
-        // Add Inisde (uploadedFileIconText) The Uploaded File Type
-        uploadedFileIconText.innerHTML = isImage[0];
-      }
-
-      // If The Uploaded File Is An Image
-      if (isImage.length !== 0) {
-        // Check, If File Size Is 2MB or Less
-        if (fileSize <= 2000000) {
-          // 2MB :)
-          return true;
-        } else {
-          // Else File Size
-          return alert("Please Your File Should be 2 Megabytes or Less");
-        }
-      } else {
-        // Else File Type
-        return alert("Please make sure to upload An Image File Type");
-      }
+      // let isImage = imagesTypes.filter(
+      //   (type) => fileType.indexOf(`image/${type}`) !== -1
+      // );
+      // // If The Uploaded File Type Is 'jpeg'
+      // if (isImage[0] === "jpeg") {
+      //   // Add Inisde (uploadedFileIconText) The (jpg) Value
+      //   uploadedFileIconText.innerHTML = "jpg";
+      // } else {
+      //   // else
+      //   // Add Inisde (uploadedFileIconText) The Uploaded File Type
+      //   uploadedFileIconText.innerHTML = isImage[0];
+      // }
+      // // If The Uploaded File Is An Image
+      // if (isImage.length !== 0) {
+      //   // Check, If File Size Is 2MB or Less
+      //   if (fileSize <= 2000000) {
+      //     // 2MB :)
+      //     return true;
+      //   } else {
+      //     // Else File Size
+      //     return alert("Please Your File Should be 2 Megabytes or Less");
+      //   }
+      // } else {
+      //   // Else File Type
+      //   return alert("Please make sure to upload An Image File Type");
+      // }
+      return true;
     }
 
     // :)
@@ -220,9 +223,9 @@ export default function AppFileUpload({ onUploadImageHandler }) {
     <div>
       <div id="uploadArea" class="upload-area">
         <div class="upload-area__header">
-          <h1 class="upload-area__title">Upload your file</h1>
+          <h1 class="upload-area__title">{mainTitle}</h1>
           <p class="upload-area__paragraph">
-            File should be an image
+            {subTitle}{" "}
             <strong class="upload-area__tooltip">
               Like
               <span class="upload-area__tooltip-data"></span>
@@ -244,7 +247,7 @@ export default function AppFileUpload({ onUploadImageHandler }) {
             src=""
             alt="Preview Image"
             id="previewImage"
-            class="drop-zoon__preview-image"
+            className="drop-zoon__preview-image"
             draggable="false"
           />
           <input
