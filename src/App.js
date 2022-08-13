@@ -8,6 +8,7 @@ import SignUp from "./Screens/Auth/Signup/Signup";
 import Home from "./Screens/Home/Home";
 import ProtectedRoute from "./Screens/Auth/ProtectedRoute/ProtectedRoute";
 import "./App.css";
+import Studio from "./Screens/Studio/Studio.jsx";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -55,6 +56,15 @@ function App() {
             element={
               <ProtectedRoute auth={loggedInUser?.email ? true : false}>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/studio"
+            exact
+            element={
+              <ProtectedRoute auth={loggedInUser?.email ? true : false}>
+                <Studio />
               </ProtectedRoute>
             }
           />
