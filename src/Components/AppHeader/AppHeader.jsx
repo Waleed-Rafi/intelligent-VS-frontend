@@ -25,12 +25,13 @@ export default function AppHeader() {
 
           <nav>
             <Link to="/" className="selected">
-              Home
+              <i className="bx bxs-home"></i> Home
             </Link>
-            <Link to="/">Studio</Link>
-            <Link to="/">About</Link>
+            <Link to="/studio">
+              <i className="bx bxs-video"></i> Studio
+            </Link>
             <Link to="/" onClick={logoutHandler}>
-              Logout
+              <i className="bx bxs-user"></i> Logout
             </Link>
           </nav>
         </div>
