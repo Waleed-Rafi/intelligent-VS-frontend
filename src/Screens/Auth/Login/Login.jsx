@@ -43,7 +43,6 @@ export default function Login() {
         adminCredentials.email,
         adminCredentials.password
       );
-      alert("Successfully Logged In!");
     } catch (error) {
       setIsLoginFailed(true);
     }
