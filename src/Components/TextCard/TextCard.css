@@ -1,0 +1,9 @@
+.text-card {
+  background-color: #3a3b3c;
+  width: fit-content;
+  max-width: 50%;
+  padding: 20px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.486);
+  position: relative;
+}

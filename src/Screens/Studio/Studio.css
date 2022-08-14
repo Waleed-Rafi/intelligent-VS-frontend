@@ -1,12 +1,14 @@
-.studio-face-blur-container {
-  margin: 50px 50px;
-}
-
-.face-blur-heading {
-  font-size: 40px;
+.studio-heading {
+  margin: 40px 100px;
+  font-size: 50px;
   font-weight: bold;
 }
 
-.face-blur-video-image-main {
-  margin-top: 50px;
+.all-cards {
+  margin: 50px 120px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 40px 50px;
+  flex-wrap: wrap;
 }

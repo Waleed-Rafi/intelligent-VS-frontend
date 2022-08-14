@@ -7,8 +7,10 @@ import Login from "./Screens/Auth/Login/Login";
 import SignUp from "./Screens/Auth/Signup/Signup";
 import Home from "./Screens/Home/Home";
 import ProtectedRoute from "./Screens/Auth/ProtectedRoute/ProtectedRoute";
+import Studio from "./Screens/Studio/Studio";
+import FaceBlur from "./Screens/Studio/FaceBlur/FaceBlur";
+import FaceReenactment from "./Screens/Studio/FaceReenactment/FaceReenactment";
 import "./App.css";
-import Studio from "./Screens/Studio/Studio.jsx";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -65,6 +67,24 @@ function App() {
             element={
               <ProtectedRoute auth={loggedInUser?.email ? true : false}>
                 <Studio />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/face/blur"
+            exact
+            element={
+              <ProtectedRoute auth={loggedInUser?.email ? true : false}>
+                <FaceBlur />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/face/reenact"
+            exact
+            element={
+              <ProtectedRoute auth={loggedInUser?.email ? true : false}>
+                <FaceReenactment />
               </ProtectedRoute>
             }
           />
