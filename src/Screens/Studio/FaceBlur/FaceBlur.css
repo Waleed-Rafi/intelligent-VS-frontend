@@ -17,3 +17,27 @@
   column-gap: 100px;
   flex-wrap: wrap;
 }
+
+.next-btn {
+  padding: 10px 40px;
+  background-color: #82e0aa;
+  color: #186a3b;
+  font-weight: bold;
+  align-self: flex-end;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.prev-btn {
+  padding: 10px 40px;
+  background-color: #f1948a;
+  color: #943126;
+  font-weight: bold;
+  align-self: flex-end;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.heading-section-main {
+  display: flex;
+  justify-content: space-between;
+}
