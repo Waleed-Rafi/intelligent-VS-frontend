@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
 import { useNavigate } from "react-router-dom";
+import axios from "../../../axios/index";
 import "./Signup.css";
 
 // auth.setPersistence(auth, browserLocalPersistence);
@@ -47,14 +48,18 @@ export default function SignUp() {
 
   const submitSignUpForm = async () => {
     try {
+      await axios.post("/create/user", {
+        username: adminCredentials.name,
+        email: adminCredentials.email,
+      });
       const { user } = await createUserWithEmailAndPassword(
         auth,
         adminCredentials.email,
         adminCredentials.password
       );
-      await updateProfile(user, {
-        displayName: adminCredentials.name,
-      });
+      // await updateProfile(user, {
+      //   displayName: adminCredentials.name,
+      // });
       alert("Successfully Created!");
     } catch (error) {
       setIsSignUpFailed(true);
