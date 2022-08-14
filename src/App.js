@@ -11,6 +11,7 @@ import Studio from "./Screens/Studio/Studio";
 import FaceBlur from "./Screens/Studio/FaceBlur/FaceBlur";
 import FaceReenactment from "./Screens/Studio/FaceReenactment/FaceReenactment";
 import "./App.css";
+import SimpleUpload from "./Screens/Studio/SimpleUpload/SimpleUpload.jsx";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -85,6 +86,15 @@ function App() {
             element={
               <ProtectedRoute auth={loggedInUser?.email ? true : false}>
                 <FaceReenactment />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/simple/upload"
+            exact
+            element={
+              <ProtectedRoute auth={loggedInUser?.email ? true : false}>
+                <SimpleUpload />
               </ProtectedRoute>
             }
           />

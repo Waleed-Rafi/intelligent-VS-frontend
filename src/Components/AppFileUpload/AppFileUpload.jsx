@@ -254,7 +254,7 @@ export default function AppFileUpload({
             type="file"
             id="fileInput"
             class="drop-zoon__file-input"
-            accept="image/*"
+            // accept="image/*"
           />
         </div>
 

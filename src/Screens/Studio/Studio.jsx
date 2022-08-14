@@ -34,6 +34,14 @@ export default function Studio() {
           }}
           onClickHandler={() => optionClickHandler("/face/reenact")}
         />
+        <OptionCard
+          title="Simple Upload"
+          optionContainerStyles={{
+            backgroundColor: "rgb(235, 222, 240)",
+            color: "rgb(118, 68, 138)",
+          }}
+          onClickHandler={() => optionClickHandler("/simple/upload")}
+        />
       </div>
     </div>
   );
