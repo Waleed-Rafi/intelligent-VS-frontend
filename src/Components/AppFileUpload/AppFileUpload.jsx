@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./AppFileUpload.css";
 
 export default function AppFileUpload({
-  onUploadImageHandler,
+  onFileChangeHandler,
   mainTitle = "Upload your file",
   subTitle = "File should be an image",
 }) {
@@ -112,7 +112,7 @@ export default function AppFileUpload({
 
       // If File Is Passed from the (File Validation) Function
       if (fileValidate(fileType, fileSize)) {
-        // onUploadImageHandler(file);
+        onFileChangeHandler(file);
         // Add Class (drop-zoon--Uploaded) on (drop-zoon)
         dropZoon.classList.add("drop-zoon--Uploaded");
 
@@ -254,7 +254,7 @@ export default function AppFileUpload({
             type="file"
             id="fileInput"
             class="drop-zoon__file-input"
-            // accept="image/*"
+            accept=".mp4"
           />
         </div>
 
