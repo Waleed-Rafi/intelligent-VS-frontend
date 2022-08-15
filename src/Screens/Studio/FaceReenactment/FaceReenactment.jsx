@@ -23,50 +23,57 @@ export default function FaceReenactment() {
     console.log(e.target.files[0]);
     let tempData = { ...postData };
     tempData.poseVideo = e.target.files[0];
+    setPostData(tempData);
   };
 
   const audioSourceVideoChangeHandler = (e) => {
     console.log(e.target.files[0]);
     let tempData = { ...postData };
     tempData.audioSource = e.target.files[0];
+    setPostData(tempData);
   };
 
   const inputImageChangeHandler = (e) => {
     console.log(e.target.files[0]);
     let tempData = { ...postData };
     tempData.inputImage = e.target.files[0];
+    setPostData(tempData);
   };
 
-  const uploadFileToFirebase = (file) => {
-    const timeStamp = new Date().getTime();
+  const uploadFileToFirebase = async (file) => {
+    const myPromise = new Promise((resolve, reject) => {
+      const timeStamp = new Date().getTime();
 
-    const storageRef = ref(storage, "/simple-videos/" + timeStamp);
+      const storageRef = ref(storage, "/simple-videos/" + timeStamp);
 
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        console.log(prog);
-      },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
-          return url;
-        });
-      }
-    );
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const prog = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(prog);
+        },
+        (err) => console.log(err),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            resolve(url);
+          });
+        }
+      );
+    });
+    return myPromise;
   };
 
-  const onUploadHandler = () => {
+  const onUploadHandler = async () => {
+    console.log(postData);
     if (postData.poseVideo && postData.audioSource && postData.inputImage) {
-      const poseVideoUrl = uploadFileToFirebase(postData.poseVideo);
-      const audioSourceUrl = uploadFileToFirebase(postData.audioSource);
-      const inputImageUrl = uploadFileToFirebase(postData.inputImage);
-      console.log(poseVideoUrl, audioSourceUrl, inputImageUrl);
+      const poseVideoUrl = await uploadFileToFirebase(postData.poseVideo);
+      const audioSourceUrl = await uploadFileToFirebase(postData.audioSource);
+      const inputImageUrl = await uploadFileToFirebase(postData.inputImage);
+
       if (poseVideoUrl && audioSourceUrl && inputImageUrl) {
         axios
           .post("/face_reenactment", {

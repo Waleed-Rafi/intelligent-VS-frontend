@@ -34,35 +34,38 @@ export default function FaceBlur() {
     setPostData(tempData);
   };
 
-  const uploadFileToFirebase = (file) => {
-    const timeStamp = new Date().getTime();
+  const uploadFileToFirebase = async (file) => {
+    const myPromise = new Promise((resolve, reject) => {
+      const timeStamp = new Date().getTime();
 
-    const storageRef = ref(storage, "/simple-videos/" + timeStamp);
+      const storageRef = ref(storage, "/simple-videos/" + timeStamp);
 
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        console.log(prog);
-      },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
-          return url;
-        });
-      }
-    );
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const prog = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(prog);
+        },
+        (err) => console.log(err),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            resolve(url);
+          });
+        }
+      );
+    });
+    return myPromise;
   };
 
-  const postDataUploadHandler = () => {
+  const postDataUploadHandler = async () => {
     if (postData.image && postData.video) {
-      const videoUrl = uploadFileToFirebase(postData.video);
-      const imageUrl = uploadFileToFirebase(postData.image);
-      console.log(videoUrl, imageUrl);
+      const videoUrl = await uploadFileToFirebase(postData.video);
+      const imageUrl = await uploadFileToFirebase(postData.image);
+
       if (videoUrl && imageUrl) {
         axios
           .post("/face_blur", {
