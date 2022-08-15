@@ -4,10 +4,14 @@ import axios from "../../axios/index";
 import "./Home.css";
 import { useState } from "react";
 import loadingAnimation from "../../assets/loading1.gif";
+import ModalShareVideo from "../../Components/AppModals/ModalShareVideo/ModalShareVideo";
 
 export default function Home() {
   const [allVideosData, setAllVideoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [openShareModal, setOpenShareModal] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
   useEffect(() => {
     setTimeout(() => {
       axios.get("/videos/all").then((res) => {
@@ -18,8 +22,22 @@ export default function Home() {
     }, 3000);
   }, []);
 
+  const onClose = () => {
+    setOpenShareModal(false);
+  };
+
+  const shareVideoHandler = (url) => {
+    setVideoUrl(url);
+    setOpenShareModal(true);
+  };
+
   return (
     <div>
+      <ModalShareVideo
+        isOpen={openShareModal}
+        videoUrl={videoUrl}
+        onClose={onClose}
+      />
       <AppHeader />
       <div className="home-screen-container">
         {isLoading ? (
@@ -47,7 +65,10 @@ export default function Home() {
                   <div className="home-screen-video-action-btn">
                     <i className="bx bxs-message-square-add"></i>
                   </div>
-                  <div className="home-screen-video-action-btn home-screen-video-share-btn">
+                  <div
+                    className="home-screen-video-action-btn home-screen-video-share-btn"
+                    onClick={() => shareVideoHandler(video[1])}
+                  >
                     <i className="bx bxs-share"></i>
                   </div>
                 </div>
