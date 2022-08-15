@@ -24,7 +24,7 @@ export default function AppHeader() {
           </h1>
 
           <nav>
-            <Link to="/" className="selected">
+            <Link to="/">
               <i className="bx bxs-home"></i> Home
             </Link>
             <Link to="/studio">
