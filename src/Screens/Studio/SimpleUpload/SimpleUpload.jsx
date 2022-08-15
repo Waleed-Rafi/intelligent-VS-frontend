@@ -38,10 +38,17 @@ export default function SimpleUpload() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             console.log(url);
-            axios.post("/upload/video/simple", {
-              videoUrl: url,
-              userId: 1,
-            });
+            axios
+              .post("/upload/video/simple", {
+                videoUrl: url,
+                userId: 1,
+              })
+              .then((res) => {
+                alert("Successfully Uploaded");
+              })
+              .catch((err) => {
+                alert("Error in uploading video");
+              });
           });
         }
       );
