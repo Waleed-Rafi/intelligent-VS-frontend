@@ -3,20 +3,30 @@ import AppHeader from "../../Components/AppHeader/AppHeader";
 import axios from "../../axios/index";
 import "./Home.css";
 import { useState } from "react";
+import loadingAnimation from "../../assets/loading1.gif";
 
 export default function Home() {
   const [allVideosData, setAllVideoData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios.get("/videos/all").then((res) => {
-      console.log(res.data.data);
-      setAllVideoData(res.data.data);
-    });
+    setTimeout(() => {
+      axios.get("/videos/all").then((res) => {
+        setIsLoading(false);
+        console.log(res.data.data);
+        setAllVideoData(res.data.data);
+      });
+    }, 3000);
   }, []);
 
   return (
     <div>
       <AppHeader />
       <div className="home-screen-container">
+        {isLoading ? (
+          <div className="loading-animation-container">
+            <img src={loadingAnimation} alt="" />
+          </div>
+        ) : null}
         {allVideosData.map((video) => {
           return (
             <div className="home-screen-video-main" key={video[0]}>

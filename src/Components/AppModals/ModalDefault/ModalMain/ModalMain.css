@@ -1,0 +1,11 @@
+.app-modal-main {
+  width: 40%;
+  margin: auto;
+  top: 5% !important;
+  outline: none;
+  border: none;
+}
+
+.app-modal-box-main {
+  background-color: white;
+}

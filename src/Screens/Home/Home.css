@@ -39,6 +39,14 @@
   margin: 20px 0;
 }
 
+.loading-animation-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
 @media screen and (max-width: 700px) {
   .home-screen-video {
     height: max-content;
