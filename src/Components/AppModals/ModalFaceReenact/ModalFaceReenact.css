@@ -1,0 +1,9 @@
+.ml-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ml-animation img {
+  width: 50%;
+}

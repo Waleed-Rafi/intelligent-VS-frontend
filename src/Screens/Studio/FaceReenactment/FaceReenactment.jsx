@@ -9,6 +9,8 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import ModalFaceReenact from "../../../Components/AppModals/ModalFaceReenact/ModalFaceReenact";
+import swal from "sweetalert";
 
 const storage = getStorage();
 
@@ -18,6 +20,13 @@ export default function FaceReenactment() {
     audioSource: null,
     inputImage: null,
   });
+
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [labelOnModal, setLabelOnModal] = useState("Uploading Pose Video...");
+
+  const [showProgressModal, setShowProgressModal] = useState(false);
+  const [showRunningMLModalAnimation, setShowRunningMLModalAnimation] =
+    useState(false);
 
   const poseVideoChangeHandler = (e) => {
     console.log(e.target.files[0]);
@@ -54,6 +63,8 @@ export default function FaceReenactment() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           console.log(prog);
+
+          setUploadProgress(prog);
         },
         (err) => console.log(err),
         () => {
@@ -68,13 +79,17 @@ export default function FaceReenactment() {
   };
 
   const onUploadHandler = async () => {
-    console.log(postData);
     if (postData.poseVideo && postData.audioSource && postData.inputImage) {
+      setShowProgressModal(true);
       const poseVideoUrl = await uploadFileToFirebase(postData.poseVideo);
+      setLabelOnModal("Uploading Video for Audio Source...");
       const audioSourceUrl = await uploadFileToFirebase(postData.audioSource);
+      setLabelOnModal("Uploading Input Image...");
       const inputImageUrl = await uploadFileToFirebase(postData.inputImage);
-
       if (poseVideoUrl && audioSourceUrl && inputImageUrl) {
+        setLabelOnModal("Running Machine Learning Modal ...");
+        setShowRunningMLModalAnimation(true);
+
         axios
           .post("/face_reenactment", {
             input_image_url: inputImageUrl,
@@ -82,20 +97,34 @@ export default function FaceReenactment() {
             input_audio_src_url: audioSourceUrl,
           })
           .then((res) => {
-            alert("Successfully uploaded!");
+            swal(
+              "Upload Completed!",
+              "Your video successfully uploaded!",
+              "success"
+            );
           })
           .catch((e) => {
-            alert("Error in uploading!");
+            swal("Upload Fail!", "Something went wrong, try again!", "error");
           });
       } else {
-        alert("ERROR: Something went wrong in uploading!");
+        swal("Upload Fail!", "Something went wrong, try again!", "error");
       }
     }
+    setShowRunningMLModalAnimation(false);
+    setShowProgressModal(false);
+    setUploadProgress(0);
+    setLabelOnModal("Uploading Pose Video...");
   };
 
   return (
     <div>
       <AppHeader />
+      <ModalFaceReenact
+        isModalOpen={showProgressModal}
+        uploadProgress={uploadProgress}
+        label={labelOnModal}
+        showMLAnimation={showRunningMLModalAnimation}
+      />
       <div className="studio-face-blur-container">
         <div className="heading-section-main">
           <div className="face-blur-heading">Face Reenactment</div>
