@@ -10,6 +10,7 @@ import {
 } from "firebase/storage";
 import { useState } from "react";
 import axios from "../../../axios/index";
+import ModalSimpleUpload from "../../../Components/AppModals/ModalSimpleVideoUpload/ModalSimpleUpload";
 const storage = getStorage();
 
 export default function SimpleUpload() {
@@ -56,6 +57,7 @@ export default function SimpleUpload() {
   };
   return (
     <div>
+      <ModalSimpleUpload />
       <AppHeader />
       <div className="studio-face-blur-container">
         <div className="heading-section-main">
