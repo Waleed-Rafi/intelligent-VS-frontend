@@ -19,6 +19,7 @@ export default function SimpleUpload() {
   const [myFile, setMyFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showProgressModal, setShowProgressModal] = useState(false);
+
   const onFileChangeHandlerF = (e) => {
     const file = e.target.files[0];
     setMyFile(file);
@@ -42,11 +43,6 @@ export default function SimpleUpload() {
           setUploadProgress(prog);
           if (prog > 99) {
             setShowProgressModal(false);
-            swal(
-              "Upload Completed!",
-              "Your video successfully uploaded!",
-              "success"
-            );
           }
         },
         (err) => {
@@ -56,17 +52,25 @@ export default function SimpleUpload() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             console.log(url);
-            //   axios
-            //     .post("/upload/video/simple", {
-            //       videoUrl: url,
-            //       userId: 1,
-            //     })
-            //     .then((res) => {
-            //       alert("Successfully Uploaded");
-            //     })
-            //     .catch((err) => {
-            //       alert("Error in uploading video");
-            //     });
+            axios
+              .post("/upload/video/simple", {
+                videoUrl: url,
+                userId: 1,
+              })
+              .then((res) => {
+                swal(
+                  "Upload Completed!",
+                  "Your video successfully uploaded!",
+                  "success"
+                );
+              })
+              .catch((err) => {
+                swal(
+                  "Error Uploading",
+                  "Something went wrong, Try again!",
+                  "error"
+                );
+              });
           });
         }
       );
