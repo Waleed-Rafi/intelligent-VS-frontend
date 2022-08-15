@@ -37,6 +37,7 @@
   padding: 13px 20px;
   border-radius: 50%;
   margin: 20px 0;
+  cursor: pointer;
 }
 
 .loading-animation-container {

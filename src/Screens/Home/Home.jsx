@@ -62,9 +62,9 @@ export default function Home() {
                       style={{ color: "#89E8D5" }}
                     ></i>
                   </div>
-                  <div className="home-screen-video-action-btn">
+                  {/* <div className="home-screen-video-action-btn">
                     <i className="bx bxs-message-square-add"></i>
-                  </div>
+                  </div> */}
                   <div
                     className="home-screen-video-action-btn home-screen-video-share-btn"
                     onClick={() => shareVideoHandler(video[1])}
