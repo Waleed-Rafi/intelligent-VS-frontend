@@ -5,15 +5,15 @@ import ModalBody from "../ModalDefault/ModalBody/ModalBody";
 import LinearProgress from "@mui/material/LinearProgress";
 import "./ModalSimpleVideo.css";
 
-export default function ModalSimpleUpload({ progress = 10 }) {
+export default function ModalSimpleUpload({ isModalOpen, uploadProgress = 0 }) {
   return (
     <div>
-      <ModalMain isOpen={true}>
+      <ModalMain isOpen={isModalOpen}>
         <ModalHeader />
         <ModalBody>
           <div className="my-progress-bar">
             <div className="my-progress-label">Uploading Video...</div>
-            <LinearProgress variant="determinate" value={progress} />
+            <LinearProgress variant="determinate" value={uploadProgress} />
           </div>
           <div className="modal-info">
             <center>
