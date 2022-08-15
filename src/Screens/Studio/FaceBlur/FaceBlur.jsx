@@ -10,6 +10,8 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import ModalFaceReenact from "../../../Components/AppModals/ModalFaceReenact/ModalFaceReenact";
+import swal from "sweetalert";
 
 const storage = getStorage();
 
@@ -19,6 +21,12 @@ export default function FaceBlur() {
     video: null,
     image: null,
   });
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [labelOnModal, setLabelOnModal] = useState("Uploading Source Video...");
+
+  const [showProgressModal, setShowProgressModal] = useState(false);
+  const [showRunningMLModalAnimation, setShowRunningMLModalAnimation] =
+    useState(false);
 
   const toggleNextBackBtn = () => {
     setIsVideoUpload(!isVideoUpload);
@@ -48,6 +56,7 @@ export default function FaceBlur() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           console.log(prog);
+          setUploadProgress(prog);
         },
         (err) => console.log(err),
         () => {
@@ -63,29 +72,51 @@ export default function FaceBlur() {
 
   const postDataUploadHandler = async () => {
     if (postData.image && postData.video) {
+      setShowProgressModal(true);
+
       const videoUrl = await uploadFileToFirebase(postData.video);
+      setLabelOnModal("Uploading Target Image ...");
+
       const imageUrl = await uploadFileToFirebase(postData.image);
 
       if (videoUrl && imageUrl) {
+        setLabelOnModal("Running Machine Learning Modal ...");
+        setShowRunningMLModalAnimation(true);
+
         axios
           .post("/face_blur", {
             video_url: videoUrl,
             image_url: imageUrl,
           })
           .then((res) => {
-            alert("Successfully uploaded!");
+            swal(
+              "Upload Completed!",
+              "Your video successfully uploaded!",
+              "success"
+            );
           })
           .catch((e) => {
-            alert("Error in uploading!");
+            swal("Upload Fail!", "Something went wrong, try again!", "error");
           });
       } else {
-        alert("ERROR: Something went wrong in uploading!");
+        swal("Upload Fail!", "Something went wrong, try again!", "error");
       }
     }
+
+    setShowRunningMLModalAnimation(false);
+    setShowProgressModal(false);
+    setUploadProgress(0);
+    setLabelOnModal("Uploading Source Video ...");
   };
 
   return (
     <div>
+      <ModalFaceReenact
+        isModalOpen={showProgressModal}
+        uploadProgress={uploadProgress}
+        label={labelOnModal}
+        showMLAnimation={showRunningMLModalAnimation}
+      />
       <AppHeader />
       <div className="studio-face-blur-container">
         <div className="heading-section-main">
