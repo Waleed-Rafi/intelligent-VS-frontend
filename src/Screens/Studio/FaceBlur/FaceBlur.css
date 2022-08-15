@@ -12,10 +12,10 @@
 }
 
 .face-blur-video-image-main {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   column-gap: 100px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .next-btn {

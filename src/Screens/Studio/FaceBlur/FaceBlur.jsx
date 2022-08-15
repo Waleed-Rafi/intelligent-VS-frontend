@@ -115,21 +115,27 @@ export default function FaceBlur() {
           //   subTitle="File should be a video"
           // /> */}
           {isVideoUpload ? (
-            <input
-              type="file"
-              name="Upload Video"
-              id=""
-              onChange={postDataChangeHandler}
-              accept=".mp4"
-            />
+            <>
+              <div style={{ marginBottom: "10px" }}>Upload Video</div>
+              <input
+                type="file"
+                name="face_blur_video"
+                id=""
+                onChange={postDataChangeHandler}
+                accept=".mp4"
+              />
+            </>
           ) : (
-            <input
-              type="file"
-              name="Upload Video"
-              id=""
-              onChange={postDataChangeHandler}
-              accept=".jpg"
-            />
+            <>
+              <div style={{ marginBottom: "10px" }}>Upload Image</div>
+              <input
+                type="file"
+                name="Upload Image"
+                id=""
+                onChange={postDataChangeHandler}
+                accept=".jpg"
+              />
+            </>
           )}
           {/* <AppFileUpload mainTitle="Upload an Image" /> */}
         </div>

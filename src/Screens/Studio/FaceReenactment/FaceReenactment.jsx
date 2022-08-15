@@ -111,6 +111,7 @@ export default function FaceReenactment() {
         </div>
         <div className="face-blur-video-image-main">
           <div>
+            <div style={{ marginBottom: "10px" }}>Upload Pose Video</div>
             <input
               type="file"
               name=""
@@ -119,7 +120,9 @@ export default function FaceReenactment() {
               onChange={poseVideoChangeHandler}
             />
           </div>
+          <br />
           <div>
+            <div style={{ marginBottom: "10px" }}>Upload Audio Source</div>
             <input
               type="file"
               name=""
@@ -128,7 +131,9 @@ export default function FaceReenactment() {
               onChange={audioSourceVideoChangeHandler}
             />
           </div>
+          <br />
           <div>
+            <div style={{ marginBottom: "10px" }}>Upload Input Image</div>
             <input
               type="file"
               name=""
