@@ -78,8 +78,8 @@ export default function FaceReenactment() {
         axios
           .post("/face_reenactment", {
             input_image_url: inputImageUrl,
-            input_pose_source_url: poseVideoUrl,
-            input_audio_source_url: audioSourceUrl,
+            input_pose_src_url: poseVideoUrl,
+            input_audio_src_url: audioSourceUrl,
           })
           .then((res) => {
             alert("Successfully uploaded!");
