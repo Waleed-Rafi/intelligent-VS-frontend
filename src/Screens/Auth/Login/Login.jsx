@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import "./Login.css";
 
 // auth.setPersistence(auth, browserLocalPersistence);
@@ -38,11 +39,27 @@ export default function Login() {
 
   const submitLoginForm = async () => {
     try {
-      await signInWithEmailAndPassword(
+      signInWithEmailAndPassword(
         auth,
         adminCredentials.email,
         adminCredentials.password
-      );
+      ).then((res) => {
+        emailjs
+          .send(
+            "service_g8vdb5s",
+            "template_9bezwdp",
+            { email: adminCredentials.email },
+            "v2hnoifuMCtV0DxvV"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+      });
     } catch (error) {
       setIsLoginFailed(true);
     }
