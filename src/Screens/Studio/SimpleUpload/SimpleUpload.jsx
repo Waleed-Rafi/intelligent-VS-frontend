@@ -86,7 +86,7 @@ export default function SimpleUpload() {
       <AppHeader />
       <div className="studio-face-blur-container">
         <div className="heading-section-main">
-          <div className="face-blur-heading">Upload</div>
+          <div className="face-blur-heading">Simple Video</div>
           <div className="next-btn" onClick={onVideoUploadHandler}>
             Upload
           </div>
@@ -99,13 +99,13 @@ export default function SimpleUpload() {
           /> */}
             <input
               type="file"
-              name="Upload Video"
+              name="Choose Video File"
               id="simpleFile"
               onChange={onFileChangeHandlerF}
               accept=".mp4"
             />
             <label htmlFor="simpleFile" id="simpleFileLabel">
-              <i className="bx bx-upload"></i>&nbsp; Upload Video
+              <i className="bx bx-upload"></i>&nbsp; Choose Video File
             </label>
           </div>
           {myFile && (
