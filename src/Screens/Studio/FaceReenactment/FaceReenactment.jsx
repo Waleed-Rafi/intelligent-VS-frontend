@@ -99,6 +99,7 @@ export default function FaceReenactment() {
           .then((res) => {
             setShowRunningMLModalAnimation(false);
             setShowProgressModal(false);
+            setLabelOnModal("Uploading Pose Video...");
             swal(
               "Upload Completed!",
               "Your video successfully uploaded!",
@@ -108,6 +109,7 @@ export default function FaceReenactment() {
           .catch((e) => {
             setShowRunningMLModalAnimation(false);
             setShowProgressModal(false);
+            setLabelOnModal("Uploading Pose Video...");
             swal("Upload Fail!", "Something went wrong, try again!", "error");
           });
       } else {
@@ -115,7 +117,6 @@ export default function FaceReenactment() {
       }
     }
     setUploadProgress(0);
-    setLabelOnModal("Uploading Pose Video...");
   };
 
   return (
