@@ -97,6 +97,8 @@ export default function FaceReenactment() {
             input_audio_src_url: audioSourceUrl,
           })
           .then((res) => {
+            setShowRunningMLModalAnimation(false);
+            setShowProgressModal(false);
             swal(
               "Upload Completed!",
               "Your video successfully uploaded!",
@@ -104,14 +106,14 @@ export default function FaceReenactment() {
             );
           })
           .catch((e) => {
+            setShowRunningMLModalAnimation(false);
+            setShowProgressModal(false);
             swal("Upload Fail!", "Something went wrong, try again!", "error");
           });
       } else {
         swal("Upload Fail!", "Something went wrong, try again!", "error");
       }
     }
-    setShowRunningMLModalAnimation(false);
-    setShowProgressModal(false);
     setUploadProgress(0);
     setLabelOnModal("Uploading Pose Video...");
   };
