@@ -80,7 +80,7 @@ export default function FaceBlur() {
       const imageUrl = await uploadFileToFirebase(postData.image);
 
       if (videoUrl && imageUrl) {
-        setLabelOnModal("Running Machine Learning Modal ...");
+        setLabelOnModal("Face blur in progress...");
         setShowRunningMLModalAnimation(true);
 
         axios
@@ -89,6 +89,9 @@ export default function FaceBlur() {
             image_url: imageUrl,
           })
           .then((res) => {
+            setShowRunningMLModalAnimation(false);
+            setShowProgressModal(false);
+            setLabelOnModal("Uploading Source Video ...");
             swal(
               "Upload Completed!",
               "Your video successfully uploaded!",
@@ -96,6 +99,9 @@ export default function FaceBlur() {
             );
           })
           .catch((e) => {
+            setShowRunningMLModalAnimation(false);
+            setShowProgressModal(false);
+            setLabelOnModal("Uploading Source Video ...");
             swal("Upload Fail!", "Something went wrong, try again!", "error");
           });
       } else {
@@ -103,10 +109,7 @@ export default function FaceBlur() {
       }
     }
 
-    setShowRunningMLModalAnimation(false);
-    setShowProgressModal(false);
     setUploadProgress(0);
-    setLabelOnModal("Uploading Source Video ...");
   };
 
   return (

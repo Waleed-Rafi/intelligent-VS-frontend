@@ -87,7 +87,7 @@ export default function FaceReenactment() {
       setLabelOnModal("Uploading Input Image...");
       const inputImageUrl = await uploadFileToFirebase(postData.inputImage);
       if (poseVideoUrl && audioSourceUrl && inputImageUrl) {
-        setLabelOnModal("Running Machine Learning Modal ...");
+        setLabelOnModal("Face Reenactment in process...");
         setShowRunningMLModalAnimation(true);
 
         axios
