@@ -1,0 +1,32 @@
+#simpleFile {
+  display: none;
+}
+
+#simpleFileLabel {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #252f3e;
+  border: 1px dashed #ffff;
+  cursor: pointer;
+  font-size: 20px;
+}
+.bx .bx-upload {
+  font-size: 30px;
+}
+.simpleVideoDisplay {
+  margin-top: 50px;
+  width: 500px;
+  height: 400px;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.simpleVideoInputVideoContainer {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}

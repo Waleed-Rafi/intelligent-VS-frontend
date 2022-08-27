@@ -12,6 +12,7 @@ import { useState } from "react";
 import axios from "../../../axios/index";
 import ModalSimpleUpload from "../../../Components/AppModals/ModalSimpleVideoUpload/ModalSimpleUpload";
 import swal from "sweetalert";
+import "./SimpleUpload.css";
 
 const storage = getStorage();
 
@@ -90,18 +91,32 @@ export default function SimpleUpload() {
             Upload
           </div>
         </div>
-        <div className="face-blur-video-image-main">
-          {/* <AppFileUpload
+        <div className="simpleVideoInputVideoContainer">
+          <div className="face-blur-video-image-main">
+            {/* <AppFileUpload
             mainTitle="Upload a Video"
             onFileChangeHandler={onFileChangeHandlerF}
           /> */}
-          <input
-            type="file"
-            name="Upload Video"
-            id=""
-            onChange={onFileChangeHandlerF}
-            accept=".mp4"
-          />
+            <input
+              type="file"
+              name="Upload Video"
+              id="simpleFile"
+              onChange={onFileChangeHandlerF}
+              accept=".mp4"
+            />
+            <label htmlFor="simpleFile" id="simpleFileLabel">
+              <i className="bx bx-upload"></i>&nbsp; Upload Video
+            </label>
+          </div>
+          {myFile && (
+            <div className="simpleVideoDisplayContainer">
+              <video
+                className="simpleVideoDisplay"
+                src={URL.createObjectURL(myFile)}
+                controls
+              ></video>
+            </div>
+          )}
         </div>
       </div>
     </div>
