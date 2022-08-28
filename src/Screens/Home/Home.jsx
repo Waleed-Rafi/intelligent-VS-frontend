@@ -60,37 +60,52 @@ export default function Home() {
             <img src={loadingAnimation} alt="" />
           </div>
         ) : null}
-        {allVideosData.map((video) => {
-          return (
-            <div className="home-screen-video-main" key={video[0]}>
-              <div className="home-screen-video-with-actions">
-                <video
-                  className="home-screen-video"
-                  src={video[1]}
-                  controls
-                ></video>
-                <div className="home-screen-video-actions">
-                  <div className="home-screen-video-action-btn">
-                    {/* <i class="bx bx-donate-heart"></i> */}
-                    <i
-                      className="bx bxs-donate-heart"
-                      style={{ color: "#89E8D5" }}
-                    ></i>
-                  </div>
-                  {/* <div className="home-screen-video-action-btn">
-                    <i className="bx bxs-message-square-add"></i>
-                  </div> */}
-                  <div
-                    className="home-screen-video-action-btn home-screen-video-share-btn"
-                    onClick={() => shareVideoHandler(video[1])}
-                  >
-                    <i className="bx bxs-share"></i>
+        <div className="ads-videos-top-container">
+          <div className="home-screen-ads">
+            <img
+              src="https://i.pinimg.com/236x/77/0c/da/770cda30b5de34269b1a500cfe96d9d1--job-ads-sale-poster.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            {allVideosData.map((video) => {
+              return (
+                <div className="home-screen-video-main" key={video[0]}>
+                  <div className="home-screen-video-with-actions">
+                    <video
+                      className="home-screen-video"
+                      src={video[1]}
+                      controls
+                    ></video>
+                    {/* <div className="home-screen-video-actions">
+                      <div className="home-screen-video-action-btn">
+                        <i
+                          className="bx bxs-donate-heart"
+                          style={{ color: "#89E8D5" }}
+                        ></i>
+                      </div>
+
+                      <div
+                        className="home-screen-video-action-btn home-screen-video-share-btn"
+                        onClick={() => shareVideoHandler(video[1])}
+                      >
+                        <i className="bx bxs-share"></i>
+                      </div>
+                    </div> */}
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+          <div className="home-screen-top-video">
+            <div className="home-most-liked">Most Liked</div>
+            <video
+              src="https://firebasestorage.googleapis.com/v0/b/intelligent-vs.appspot.com/o/output%2FmyVideo1661623979.177079.mp4?alt=media&token=fa185e25-59fd-4dcb-82de-04875fe1f0c8"
+              alt=""
+              controls
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

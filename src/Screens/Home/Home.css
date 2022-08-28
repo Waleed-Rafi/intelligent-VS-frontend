@@ -15,10 +15,10 @@
 }
 
 .home-screen-video {
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
   /* background-color: #252f3e; */
-  background-color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.388);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -55,4 +55,38 @@
     max-height: 500px;
     width: 100%;
   }
+}
+
+.ads-videos-top-container {
+  /* display: grid; */
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.home-screen-ads {
+  margin-top: 70px;
+}
+
+.home-screen-ads img {
+  /* position: fixed; */
+  /* left: 5%; */
+  width: 300px;
+  /* height: 400px; */
+  object-fit: cover;
+}
+
+.home-screen-top-video {
+  margin-top: 70px;
+}
+
+.home-screen-top-video video {
+  width: 300px;
+  object-fit: cover;
+}
+
+.home-most-liked {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
