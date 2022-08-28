@@ -17,7 +17,8 @@
 .home-screen-video {
   height: 600px;
   width: 600px;
-  background-color: #252f3e;
+  /* background-color: #252f3e; */
+  background-color: aliceblue;
   border-radius: 10px;
   overflow: hidden;
 }

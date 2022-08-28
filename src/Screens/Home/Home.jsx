@@ -14,11 +14,26 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      axios.get("/videos/all").then((res) => {
-        setIsLoading(false);
-        console.log(res.data.data);
-        setAllVideoData(res.data.data);
-      });
+      axios
+        .get("/videos/all")
+        .then((res) => {
+          setIsLoading(false);
+          console.log(res.data.data);
+          setAllVideoData(res.data.data);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setAllVideoData([
+            [
+              0,
+              "https://firebasestorage.googleapis.com/v0/b/intelligent-vs.appspot.com/o/output%2FmyVideo1661623979.177079.mp4?alt=media&token=fa185e25-59fd-4dcb-82de-04875fe1f0c8",
+            ],
+            [
+              0,
+              "https://firebasestorage.googleapis.com/v0/b/intelligent-vs.appspot.com/o/output%2FmyVideo1661623979.177079.mp4?alt=media&token=fa185e25-59fd-4dcb-82de-04875fe1f0c8",
+            ],
+          ]);
+        });
     }, 3000);
   }, []);
 
