@@ -11,6 +11,7 @@ import {
 } from "firebase/storage";
 import ModalFaceReenact from "../../../Components/AppModals/ModalFaceReenact/ModalFaceReenact";
 import swal from "sweetalert";
+import "./FaceReenactment.css";
 
 const storage = getStorage();
 
@@ -142,37 +143,77 @@ export default function FaceReenactment() {
           </div>
         </div>
         <div className="face-blur-video-image-main">
-          <div>
-            <div style={{ marginBottom: "10px" }}>Upload Pose Video</div>
-            <input
-              type="file"
-              name=""
-              id=""
-              accept=".mp4"
-              onChange={poseVideoChangeHandler}
-            />
+          <div className="inputDisplayContainer">
+            <div className="face-blur-video-image-main">
+              <input
+                type="file"
+                name="Choose Video File"
+                id="poseVideo"
+                onChange={poseVideoChangeHandler}
+                accept=".mp4"
+              />
+              <label htmlFor="poseVideo" id="simpleFileLabel">
+                <i className="bx bx-upload"></i>&nbsp; Choose Pose Video
+              </label>
+            </div>
+            {postData.poseVideo && (
+              <div className="simpleVideoDisplayContainer">
+                <video
+                  className="simpleVideoDisplay"
+                  src={URL.createObjectURL(postData.poseVideo)}
+                  controls
+                ></video>
+              </div>
+            )}
           </div>
           <br />
-          <div>
-            <div style={{ marginBottom: "10px" }}>Upload Audio Source</div>
-            <input
-              type="file"
-              name=""
-              id=""
-              accept=".mp4"
-              onChange={audioSourceVideoChangeHandler}
-            />
+
+          <div className="inputDisplayContainer">
+            <div className="face-blur-video-image-main">
+              <input
+                type="file"
+                name="Choose Video File"
+                id="audioSource"
+                onChange={audioSourceVideoChangeHandler}
+                accept=".mp4"
+              />
+              <label htmlFor="audioSource" id="simpleFileLabel">
+                <i className="bx bx-upload"></i>&nbsp; Choose Audio Source
+              </label>
+            </div>
+            {postData.audioSource && (
+              <div className="simpleVideoDisplayContainer">
+                <video
+                  className="simpleVideoDisplay"
+                  src={URL.createObjectURL(postData.audioSource)}
+                  controls
+                ></video>
+              </div>
+            )}
           </div>
           <br />
-          <div>
-            <div style={{ marginBottom: "10px" }}>Upload Input Image</div>
-            <input
-              type="file"
-              name=""
-              id=""
-              accept=".jpg"
-              onChange={inputImageChangeHandler}
-            />
+          <div className="inputDisplayContainer">
+            <div className="face-blur-video-image-main">
+              <input
+                type="file"
+                name="Choose Video File"
+                id="inputImage"
+                onChange={inputImageChangeHandler}
+                accept=".jpg"
+              />
+              <label htmlFor="inputImage" id="simpleFileLabel">
+                <i className="bx bx-upload"></i>&nbsp; Choose Input Image
+              </label>
+            </div>
+            {postData.inputImage && (
+              <div className="simpleVideoDisplayContainer">
+                <img
+                  className="simpleVideoDisplay"
+                  src={URL.createObjectURL(postData.inputImage)}
+                  alt=""
+                ></img>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -1,0 +1,28 @@
+.inputDisplayContainer {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+#simpleFileLabel {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #252f3e;
+  border: 1px dashed #ffff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#poseVideo {
+  display: none;
+}
+
+#audioSource {
+  display: none;
+}
+#inputImage {
+  display: none;
+}
