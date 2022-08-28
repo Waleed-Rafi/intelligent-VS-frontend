@@ -41,3 +41,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+#videoFile {
+  display: none;
+}
+
+#imageFile {
+  display: none;
+}

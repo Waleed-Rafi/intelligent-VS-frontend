@@ -144,34 +144,59 @@ export default function FaceBlur() {
           )}
         </div>
         <div className="face-blur-video-image-main">
-          {/* // <AppFileUpload
-          //   mainTitle="Upload a Video"
-          //   subTitle="File should be a video"
-          // /> */}
           {isVideoUpload ? (
             <>
-              <div style={{ marginBottom: "10px" }}>Upload Video</div>
-              <input
-                type="file"
-                name="face_blur_video"
-                id=""
-                onChange={postDataChangeHandler}
-                accept=".mp4"
-              />
+              <div className="simpleVideoInputVideoContainer">
+                <div className="face-blur-video-image-main">
+                  <input
+                    type="file"
+                    name="face_blur_video"
+                    id="videoFile"
+                    onChange={postDataChangeHandler}
+                    accept=".mp4"
+                  />
+                  <label htmlFor="videoFile" id="simpleFileLabel">
+                    <i className="bx bx-upload"></i>&nbsp; Choose Video File
+                  </label>
+                </div>
+                {postData.video && (
+                  <div className="simpleVideoDisplayContainer">
+                    <video
+                      className="simpleVideoDisplay"
+                      src={URL.createObjectURL(postData.video)}
+                      controls
+                    ></video>
+                  </div>
+                )}
+              </div>
             </>
           ) : (
             <>
-              <div style={{ marginBottom: "10px" }}>Upload Image</div>
-              <input
-                type="file"
-                name="Upload Image"
-                id=""
-                onChange={postDataChangeHandler}
-                accept=".jpg"
-              />
+              <div className="simpleVideoInputVideoContainer">
+                <div className="face-blur-video-image-main">
+                  <input
+                    type="file"
+                    name="Upload Image"
+                    id="imageFile"
+                    onChange={postDataChangeHandler}
+                    accept=".jpg"
+                  />
+                  <label htmlFor="imageFile" id="simpleFileLabel">
+                    <i className="bx bx-upload"></i>&nbsp; Choose Image File
+                  </label>
+                </div>
+                {postData.image && (
+                  <div className="simpleVideoDisplayContainer">
+                    <img
+                      className="simpleVideoDisplay"
+                      src={URL.createObjectURL(postData.image)}
+                      alt=""
+                    />
+                  </div>
+                )}
+              </div>
             </>
           )}
-          {/* <AppFileUpload mainTitle="Upload an Image" /> */}
         </div>
       </div>
     </div>

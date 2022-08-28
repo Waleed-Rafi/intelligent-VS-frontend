@@ -93,10 +93,6 @@ export default function SimpleUpload() {
         </div>
         <div className="simpleVideoInputVideoContainer">
           <div className="face-blur-video-image-main">
-            {/* <AppFileUpload
-            mainTitle="Upload a Video"
-            onFileChangeHandler={onFileChangeHandlerF}
-          /> */}
             <input
               type="file"
               name="Choose Video File"
