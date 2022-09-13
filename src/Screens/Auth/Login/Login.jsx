@@ -47,7 +47,7 @@ export default function Login() {
       ).then((res) => {
         axios.get("/user/info?email=waleed.rafi626@gmail.com").then((res) => {
           console.log(res.data.user);
-          localStorage.setItem("user", res.data.user);
+          localStorage.setItem("user", res.data.data);
         });
         emailjs
           .send(
