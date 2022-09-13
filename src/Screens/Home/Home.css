@@ -10,7 +10,7 @@
 
 .home-screen-video-with-actions {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
 }
 
@@ -21,11 +21,14 @@
   background-color: rgba(0, 0, 0, 0.388);
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: -33px;
 }
 
 .home-screen-video-actions {
+  display: flex;
+  gap: 10px;
   align-self: flex-end;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .home-screen-video-share-btn {
@@ -35,10 +38,10 @@
 .home-screen-video-action-btn {
   background-color: #252f3e;
   font-size: 30px;
-  padding: 13px 20px;
-  border-radius: 50%;
   margin: 20px 0;
   cursor: pointer;
+  padding: 7px 20px;
+  border-radius: 30px;
 }
 
 .loading-animation-container {

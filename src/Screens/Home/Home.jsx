@@ -77,21 +77,21 @@ export default function Home() {
                         src={video[1]}
                         controls
                       ></video>
-                      {/* <div className="home-screen-video-actions">
-                    <div className="home-screen-video-action-btn">
-                      <i
-                        className="bx bxs-donate-heart"
-                        style={{ color: "#89E8D5" }}
-                      ></i>
-                    </div>
+                      <div className="home-screen-video-actions">
+                        <div className="home-screen-video-action-btn">
+                          <i
+                            className="bx bxs-donate-heart"
+                            style={{ color: "#89E8D5" }}
+                          ></i>
+                        </div>
 
-                    <div
-                      className="home-screen-video-action-btn home-screen-video-share-btn"
-                      onClick={() => shareVideoHandler(video[1])}
-                    >
-                      <i className="bx bxs-share"></i>
-                    </div>
-                  </div> */}
+                        <div
+                          className="home-screen-video-action-btn home-screen-video-share-btn"
+                          onClick={() => shareVideoHandler(video[1])}
+                        >
+                          <i className="bx bxs-share"></i>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
