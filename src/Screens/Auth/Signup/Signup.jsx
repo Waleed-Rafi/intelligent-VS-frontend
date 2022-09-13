@@ -48,19 +48,24 @@ export default function SignUp() {
 
   const submitSignUpForm = async () => {
     try {
-      await axios.post("/create/user", {
-        username: adminCredentials.name,
-        email: adminCredentials.email,
-      });
-      const { user } = await createUserWithEmailAndPassword(
+      createUserWithEmailAndPassword(
         auth,
         adminCredentials.email,
         adminCredentials.password
-      );
-      // await updateProfile(user, {
-      //   displayName: adminCredentials.name,
-      // });
-      alert("Successfully Created!");
+      )
+        .then(() => {
+          axios
+            .post("/create/user", {
+              username: adminCredentials.name,
+              email: adminCredentials.email,
+            })
+            .then(() => {
+              alert("Successfully Created!");
+            });
+        })
+        .catch((err) => {
+          setIsSignUpFailed(true);
+        });
     } catch (error) {
       setIsSignUpFailed(true);
     }

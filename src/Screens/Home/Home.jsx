@@ -11,15 +11,20 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [openShareModal, setOpenShareModal] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
+  const [mostLiked, setMostLiked] = useState("https://firebasestorage.googleapis.com/v0/b/intelligent-vs.appspot.com/o/output%2FmyVideo1661623979.177079.mp4?alt=media&token=fa185e25-59fd-4dcb-82de-04875fe1f0c8")
 
   useEffect(() => {
     setTimeout(() => {
       axios
         .get("/videos/all")
         .then((res) => {
-          setIsLoading(false);
-          console.log(res.data.data);
-          setAllVideoData(res.data.data);
+          axios.get("/video/liked").then((res2) => {
+            console.log(res2.data.videoData)
+            setMostLiked(res2.data.videoData[1])
+            setIsLoading(false);
+            console.log(res.data.data);
+            setAllVideoData(res.data.data);
+          })
         })
         .catch((err) => {
           setIsLoading(false);
@@ -34,15 +39,13 @@ export default function Home() {
             ],
           ]);
         });
-    }, 3000);
+    }, 1000);
   }, []);
 
   const likeVideoHandler = (video) => {
     console.log(video);
     const videoId = video[0];
     const userId = video[2];
-    console.log("Video Id: ", videoId);
-    console.log("User Id: ", userId);
     axios.post("/video/like", {
       videoId: videoId,
       userId: userId,
@@ -115,7 +118,7 @@ export default function Home() {
             <div className="home-screen-top-video">
               <div className="home-most-liked">Most Liked</div>
               <video
-                src="https://firebasestorage.googleapis.com/v0/b/intelligent-vs.appspot.com/o/output%2FmyVideo1661623979.177079.mp4?alt=media&token=fa185e25-59fd-4dcb-82de-04875fe1f0c8"
+                src={mostLiked}
                 alt=""
                 controls
               />

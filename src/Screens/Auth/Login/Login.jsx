@@ -9,6 +9,7 @@ import { auth } from "../../../firebase/firebase";
 import AppAlert from "../../../Components/AppAlert/AppAlert";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import axios from "../../../axios/index";
 import "./Login.css";
 
 // auth.setPersistence(auth, browserLocalPersistence);
@@ -44,6 +45,10 @@ export default function Login() {
         adminCredentials.email,
         adminCredentials.password
       ).then((res) => {
+        axios.get("/user/info?email=waleed.rafi626@gmail.com").then((res) => {
+          console.log(res.data.user);
+          localStorage.setItem("user", res.data.user);
+        });
         emailjs
           .send(
             "service_g8vdb5s",
