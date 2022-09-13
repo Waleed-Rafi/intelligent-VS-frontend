@@ -37,6 +37,10 @@ export default function Home() {
     }, 3000);
   }, []);
 
+  const likeVideoHandler = (video) => {
+    console.log(video);
+  };
+
   const onClose = () => {
     setOpenShareModal(false);
   };
@@ -78,7 +82,10 @@ export default function Home() {
                         controls
                       ></video>
                       <div className="home-screen-video-actions">
-                        <div className="home-screen-video-action-btn">
+                        <div
+                          className="home-screen-video-action-btn"
+                          onClick={() => likeVideoHandler(video)}
+                        >
                           <i
                             className="bx bxs-donate-heart"
                             style={{ color: "#89E8D5" }}
