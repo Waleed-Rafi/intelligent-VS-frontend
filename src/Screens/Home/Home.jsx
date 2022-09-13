@@ -39,8 +39,14 @@ export default function Home() {
 
   const likeVideoHandler = (video) => {
     console.log(video);
-    console.log("Video Id: ", video[0]);
-    console.log("User Id: ", video[2]);
+    const videoId = video[0];
+    const userId = video[2];
+    console.log("Video Id: ", videoId);
+    console.log("User Id: ", userId);
+    axios.post("/video/like", {
+      videoId: videoId,
+      userId: userId,
+    });
   };
 
   const onClose = () => {
