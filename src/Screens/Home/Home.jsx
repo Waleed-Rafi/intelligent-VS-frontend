@@ -39,8 +39,8 @@ export default function Home() {
 
   const likeVideoHandler = (video) => {
     console.log(video);
-    console.log("Video Id: ", video.id);
-    console.log("User Id: ", video.userId);
+    console.log("Video Id: ", video[0]);
+    console.log("User Id: ", video[2]);
   };
 
   const onClose = () => {
